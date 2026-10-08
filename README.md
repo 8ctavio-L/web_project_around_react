@@ -1,75 +1,33 @@
-# React + TypeScript + Vite
+# Around The U.S. — React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Versión en React y TypeScript del proyecto "Around The U.S.", una galería de tarjetas de lugares con perfil de usuario editable.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Galería de tarjetas con imagen, nombre y botón de "me gusta".
+- Ventanas emergentes para editar el perfil, cambiar la foto y agregar un lugar.
+- Imagen ampliada al hacer clic en una tarjeta.
 
-## React Compiler
+## Tecnologías
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** — componentes, props, `children` y estado con `useState`.
+- **TypeScript** — tipado de props y datos.
+- **Vite** — entorno de desarrollo.
+- **HTML5 y CSS3** — maquetación adaptativa con metodología BEM.
 
-## Expanding the ESLint configuration
+## Componentes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+`Header` · `Main` · `Footer` · `Popup` (reutilizable) · `Card` · `NewCard` · `EditProfile` · `EditAvatar` · `ImagePopup`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Cómo ejecutarlo
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Se abre en `http://localhost:3000`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Estado
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Los datos de las tarjetas son ficticios. La conexión con la API se agrega en un sprint posterior.
