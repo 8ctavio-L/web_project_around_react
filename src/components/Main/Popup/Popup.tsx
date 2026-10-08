@@ -1,5 +1,5 @@
 type PopupProps = {
-    title: string;
+    title?: string;
     children: React.ReactNode;
     isOpen: boolean;
     onClose: () => void;
