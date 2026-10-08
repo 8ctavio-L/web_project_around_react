@@ -2,13 +2,17 @@ import type { CardData } from '../../../types/types.ts';
 
 type CardProps = {
     card: CardData;
+    onImageClick: (card: CardData) => void;
 };
+
+
 
 export default function Card(props: CardProps): React.JSX.Element {
     const { name, link } = props.card;
+    const { onImageClick } = props;
     return (
         <li className="card">
-            <img className="card__image" src={link} alt={name} />
+            <img className="card__image" onClick={() => onImageClick(props.card)} src={link} alt={name} />
             <button
                 aria-label="Eliminar tarjeta"
                 className="card__delete-button"

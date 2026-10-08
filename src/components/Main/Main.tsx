@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import type { PopupConfig, CardData } from '../../types/types.ts';
 
-
-
 import NewCard from './Popup/NewCard/NewCard';
 import avatar from '../../images/avatar.jpg';
 import EditProfile from './Popup/EditProfile/EditProfile';
 import EditAvatar from './Popup/EditAvatar/EditAvatar';
 import Popup from './Popup/Popup';
-import Card from './Card/Card.tsx';
+import Card from './Card/Card';
+import ImagePopup from './Popup/ImagePopup/ImagePopup';
 
 const cards: CardData[] = [
     {
@@ -60,6 +59,12 @@ export default function Main(): React.JSX.Element {
         setPopup(null);
     }
 
+    function handleImageClick(card: CardData): void {
+        handleOpenPopup({
+            children: <ImagePopup card={card} />,
+        });
+    }
+
     return (
         <main className="content">
             <section className="profile page__section">
@@ -96,7 +101,7 @@ export default function Main(): React.JSX.Element {
             <section className="cards page__section">
                 <ul className="cards__list">
                     {cards.map((card) => (
-                        <Card key={card._id} card={card} />
+                        <Card key={card._id} card={card} onImageClick={handleImageClick} />
                     ))}
                 </ul>
             </section>
