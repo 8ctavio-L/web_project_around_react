@@ -42,6 +42,7 @@ export interface CurrentUserContextType {
   currentUser: UserData | null;
   handleUpdateUser: (data: UserFormData ) => void;
   handleUpdateAvatar: (data:AvatarFormData) => void;
+  handleAddPlaceSubmit: (data:CardFormData) => void;
 
 }
 

@@ -23,7 +23,7 @@ export default function Main(props:MainProps): React.JSX.Element {
     };
 
     const editProfilePopup: PopupConfig = {
-        title: 'Editar Perfil',
+        title: 'Editar perfil',
         children: <EditProfile />
     };
 
