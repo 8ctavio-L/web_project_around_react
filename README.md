@@ -1,25 +1,28 @@
 # Around The U.S. — React
 
-Versión en React y TypeScript del proyecto "Around The U.S.", una galería de tarjetas de lugares con perfil de usuario editable.
+React and TypeScript version of the "Around The U.S." project: a gallery of places connected to a real server.
 
-## Funcionalidades
+## Features
 
-- Galería de tarjetas con imagen, nombre y botón de "me gusta".
-- Ventanas emergentes para editar el perfil, cambiar la foto y agregar un lugar.
-- Imagen ampliada al hacer clic en una tarjeta.
+- User profile loaded from the API (name, description and photo).
+- Card gallery with likes and deletion.
+- Profile and avatar editing.
+- New card creation, with new cards added to the top of the list.
+- Enlarged image when clicking a card.
 
-## Tecnologías
+## Technologies
 
-- **React** — componentes, props, `children` y estado con `useState`.
-- **TypeScript** — tipado de props y datos.
-- **Vite** — entorno de desarrollo.
-- **HTML5 y CSS3** — maquetación adaptativa con metodología BEM.
+- **React** — components, props, useState, useEffect, useRef and the Context API.
+- **TypeScript** — typed props, state and API responses.
+- **Vite** — development environment.
+- **Fetch API** - requests with async/await.
+- **HTML5 y CSS3** — responsive layout using the BEM methodology.
 
 ## Componentes
 
 `Header` · `Main` · `Footer` · `Popup` (reutilizable) · `Card` · `NewCard` · `EditProfile` · `EditAvatar` · `ImagePopup`
 
-## Cómo ejecutarlo
+## Running the project
 
 ```bash
 npm install
@@ -28,6 +31,3 @@ npm run dev
 
 Se abre en `http://localhost:3000`.
 
-## Estado
-
-Los datos de las tarjetas son ficticios. La conexión con la API se agrega en un sprint posterior.
