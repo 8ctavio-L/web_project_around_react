@@ -1,8 +1,7 @@
-import { useState, useContext } from 'react';
-import type { PopupConfig, CardData } from '../../types/types.ts';
+import { useContext } from 'react';
+import type { PopupConfig, CardData, MainProps } from '../../types/types.ts';
 
 import NewCard from './Popup/NewCard/NewCard';
-import avatar from '../../images/avatar.jpg';
 import EditProfile from './Popup/EditProfile/EditProfile';
 import EditAvatar from './Popup/EditAvatar/EditAvatar';
 import Popup from './Popup/Popup';
@@ -11,30 +10,13 @@ import ImagePopup from './Popup/ImagePopup/ImagePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext.tsx';
 
 
-const cards: CardData[] = [
-    {
-        isLiked: false,
-        _id: '5d1f0611d321eb4bdcd707dd',
-        name: 'Yosemite Valley',
-        link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg',
-        owner: '5d1f0611d321eb4bdcd707dd',
-        createdAt: '2019-07-05T08:10:57.741Z',
-    },
-    {
-        isLiked: false,
-        _id: '5d1f064ed321eb4bdcd707de',
-        name: 'Lake Louise',
-        link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-        owner: '5d1f0611d321eb4bdcd707dd',
-        createdAt: '2019-07-05T08:11:58.324Z',
-    },
-];
 
 
-export default function Main(): React.JSX.Element {
-    const [popup, setPopup] = useState<PopupConfig | null>(null);
-    const { currentUser } = useContext (CurrentUserContext)
+export default function Main(props:MainProps): React.JSX.Element {
     
+    const { currentUser } = useContext (CurrentUserContext)
+    const {cards, popup, handleOpenPopup, handleClosePopup, handleCardLike, handleCardDelete} = props;
+
     const newCardPopup: PopupConfig = {
         title: 'Nuevo lugar',
         children: <NewCard />
@@ -50,13 +32,6 @@ export default function Main(): React.JSX.Element {
         children: <EditAvatar />
     }
 
-    function handleOpenPopup(popupConfig: PopupConfig): void {
-        setPopup(popupConfig)
-    }
-
-    function handleClosePopup(): void {
-        setPopup(null);
-    }
 
     function handleImageClick(card: CardData): void {
         handleOpenPopup({
@@ -100,7 +75,9 @@ export default function Main(): React.JSX.Element {
             <section className="cards page__section">
                 <ul className="cards__list">
                     {cards.map((card) => (
-                        <Card key={card._id} card={card} onImageClick={handleImageClick} />
+                        <Card key={card._id} card={card} onImageClick={handleImageClick} 
+                        handleCardLike={handleCardLike} handleCardDelete={handleCardDelete}
+                        />
                     ))}
                 </ul>
             </section>

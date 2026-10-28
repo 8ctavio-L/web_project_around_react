@@ -41,3 +41,13 @@ export interface CardFormData{
 export interface CurrentUserContextType {
   currentUser: UserData | null;
 }
+
+export interface MainProps {
+    cards: CardData[];
+    popup: PopupConfig|null;
+    handleOpenPopup: (popup:PopupConfig)=> void;
+    handleClosePopup: () => void;
+    handleCardLike: (card:CardData) => void;
+    handleCardDelete: (card:CardData) => void;
+
+}
