@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import type { PopupConfig, CardData } from '../../types/types.ts';
 
 import NewCard from './Popup/NewCard/NewCard';
@@ -8,6 +8,8 @@ import EditAvatar from './Popup/EditAvatar/EditAvatar';
 import Popup from './Popup/Popup';
 import Card from './Card/Card';
 import ImagePopup from './Popup/ImagePopup/ImagePopup';
+import CurrentUserContext from '../../contexts/CurrentUserContext.tsx';
+
 
 const cards: CardData[] = [
     {
@@ -31,7 +33,8 @@ const cards: CardData[] = [
 
 export default function Main(): React.JSX.Element {
     const [popup, setPopup] = useState<PopupConfig | null>(null);
-
+    const { currentUser } = useContext (CurrentUserContext)
+    
     const newCardPopup: PopupConfig = {
         title: 'Nuevo lugar',
         children: <NewCard />
@@ -67,8 +70,8 @@ export default function Main(): React.JSX.Element {
                 <div className="profile__avatar-container">
                     <img
                         className="profile__image"
-                        src={avatar}
-                        alt="Avatar"
+                        src={currentUser?.avatar}
+                        alt={currentUser?.name}
                     />
                     <button
                         onClick={() => handleOpenPopup(editAvatarPopup)}
@@ -78,14 +81,14 @@ export default function Main(): React.JSX.Element {
                     ></button>
                 </div>
                 <div className="profile__info">
-                    <h1 className="profile__title">Jacques Cousteau</h1>
+                    <h1 className="profile__title">{currentUser?.name}</h1>
                     <button
                         onClick={() => handleOpenPopup(editProfilePopup)}
                         aria-label="Editar perfil"
                         className="profile__edit-button"
                         type="button">
                     </button>
-                    <p className="profile__description">Explorador</p>
+                    <p className="profile__description">{currentUser?.about}</p>
                 </div>
                 <button
                     onClick={() => handleOpenPopup(newCardPopup)}
