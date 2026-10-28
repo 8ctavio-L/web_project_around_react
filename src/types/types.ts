@@ -40,6 +40,9 @@ export interface CardFormData{
 
 export interface CurrentUserContextType {
   currentUser: UserData | null;
+  handleUpdateUser: (data: UserFormData ) => void;
+  handleUpdateAvatar: (data:AvatarFormData) => void;
+
 }
 
 export interface MainProps {
@@ -51,3 +54,11 @@ export interface MainProps {
     handleCardDelete: (card:CardData) => void;
 
 }
+
+export interface AvatarFormData{
+    avatar:string;
+}
+
+
+
+

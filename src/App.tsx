@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Main from './components/Main/Main';
 import api from './utils/api';
-import type { UserData, CardData, PopupConfig } from './types/types';
+import type { UserData, CardData, PopupConfig, UserFormData, AvatarFormData } from './types/types';
 
 function App() {
   const [currentUser, setCurrentUser] = useState <UserData | null> (null);
@@ -53,6 +53,26 @@ async function handleCardDelete(card: CardData) {
   }
 }
 
+async function handleUpdateUser(data: UserFormData) {
+  try {
+    const newData = await api.editProfile(data);
+    setCurrentUser(newData);
+    handleClosePopup();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function handleUpdateAvatar(data: AvatarFormData) {
+  try {
+    const newData = await api.updateAvatar(data.avatar);
+    setCurrentUser(newData);
+    handleClosePopup();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
 function handleOpenPopup (popup:PopupConfig){
   setPopup(popup);
@@ -63,8 +83,9 @@ function handleClosePopup (){
 }
 
 
+
   return (
-    <CurrentUserContext.Provider value={{currentUser}}>
+    <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar}}>
     <div className="page__content">
       <Header />
       <Main
