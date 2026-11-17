@@ -26,7 +26,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 minLength={2}
                 maxLength={30}
             />
-            <span className="popup__error" id="place-name-error"></span>
             <input
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
@@ -36,7 +35,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 required
                 type="url"
             />
-            <span className="popup__error" id="link-error"></span>
             <button className="button popup__button" type="submit" >Crear</button>
         </form>
     );

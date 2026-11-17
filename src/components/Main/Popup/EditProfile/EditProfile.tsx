@@ -25,7 +25,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
                 minLength={2}
                 maxLength={40}
             />
-            <span className="popup__error" id="name-error"></span>
 
             <input
                 value={description}

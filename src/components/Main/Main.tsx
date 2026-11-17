@@ -85,7 +85,7 @@ export default function Main(props:MainProps): React.JSX.Element {
                 <Popup
                     onClose={handleClosePopup}
                     title={popup.title}
-                    isOpen={popup !== null}
+                    isOpen
                 >
                     {popup.children}
                 </Popup>
